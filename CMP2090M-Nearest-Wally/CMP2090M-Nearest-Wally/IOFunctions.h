@@ -3,10 +3,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <streambuf>
-#include <sstream>
-#include <vector>
-#include <algorithm>
 
 
 // Reads .txt file representing an image of R rows and C Columns stored in filename 

@@ -3,7 +3,8 @@
 	
 
 // Constructors below.
-Image::Image(){ } // Default constructor
+// Default constructor
+Image::Image(){ } 
 
 // Constructor that takes rows & cols to initialise an array of doubles.
 Image::Image(int rows, int cols)
@@ -17,4 +18,5 @@ Image::Image(int rows, int cols)
 
 Image::~Image()
 {
+	delete[] img;
 }

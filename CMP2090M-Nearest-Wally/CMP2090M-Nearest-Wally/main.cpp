@@ -5,9 +5,8 @@
 #include <vector>
 #include <thread>
 
-//void threadWrapper(const char *fileName, const char *outFile);
 void threadWrapper(const char *fileName, double *data, const int size);
-
+//void threadWrapper(const char *fileName, const char *outFile);
 
 int main()
 {
@@ -28,6 +27,13 @@ int main()
 	WallyGeneration.join();
 }
 
+void threadWrapper(const char *fileName, double *data, const int size)
+{
+	IO io;
+	std::cout << "Processing " << fileName << "..." << std::endl;
+	io.read_text(fileName, data, size);
+}
+
 /*void threadWrapper(const char *fileName, const char *outFile)
 {
 	IO io;
@@ -36,10 +42,3 @@ int main()
 	int cols = io.countCols(fileName);
 	io.read_text(fileName, rows, cols, outFile);
 }*/
-
-void threadWrapper(const char *fileName, double *data, const int size)
-{
-	IO io;
-	std::cout << "Processing " << fileName << "..." << std::endl;
-	io.read_text(fileName, data, size);
-}

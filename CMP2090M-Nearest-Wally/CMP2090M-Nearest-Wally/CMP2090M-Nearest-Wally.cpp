@@ -6,14 +6,13 @@
 #include <vector>
 #include <thread>
 
-int threadWrapper(const char *fileName, const char *outFile)
+void threadWrapper(const char *fileName, const char *outFile)
 {
 	IO io;
 	std::cout << "Processing " << fileName << "..." << std::endl;
 	int rows = io.countRows(fileName);
 	int cols = io.countCols(fileName);
 	io.read_text(fileName, rows, cols, outFile);
-	return 0;
 }
 
 int main()

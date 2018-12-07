@@ -11,4 +11,6 @@ int main()
 
 	std::vector<std::vector<double>> WallyVector; //This is a temporary Vector, and should be implemented as a Class/Obj soon
 	std::vector<std::vector<double>> SceneVector; //This is a temporary Vector, and should be implemented as a Class/Obj soon
+
+
 }

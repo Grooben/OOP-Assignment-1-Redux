@@ -31,7 +31,7 @@ public:
 		return colCount;
 	}
 
-	double* read_text(const char *fileName, int sizeR, int sizeC)
+	double* read_text(const char *fileName, int sizeR, int sizeC, const char *outFile)
 	{
 		double* data = new double[sizeR*sizeC];
 		int i = 0;
@@ -50,8 +50,8 @@ public:
 		}
 
 		else std::cout << "Unable to open file";
-		//cout << i;
-
+		std::cout << "Done " << fileName << std::endl;
+		write_pgm(outFile, data, sizeR, sizeC, 255);
 		return data;
 	}
 
@@ -60,13 +60,13 @@ public:
 	// Converts a 1D array of doubles of size R*C to .pgm image of R rows and C Columns 
 	// and stores .pgm in filename
 	// Use Q = 255 for greyscale images and 1 for binary images.
-	void write_pgm(char *filename, double *data, int sizeR, int sizeC, int Q)
+	void write_pgm(const char *filename, double *data, int sizeR, int sizeC, int Q)
 	{
 
 		int i, j;
 		unsigned char *image;
 		std::ofstream myfile;
-
+		std::cout << "Outputting: " << filename << std::endl;
 		image = (unsigned char *) new unsigned char[sizeR*sizeC];
 
 		// convert the integer values to unsigned char

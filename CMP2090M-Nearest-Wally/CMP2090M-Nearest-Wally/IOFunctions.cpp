@@ -45,6 +45,28 @@ double* IO::read_text(const char *fileName, int sizeR, int sizeC, const char *ou
 	return data;
 }
 
+// Overload that takes pre-exsisting array
+void IO::read_text(const char * fileName, double * data, const int size)
+{
+	int i = 0;
+	std::ifstream myfile(fileName);
+	if (myfile.is_open())
+	{
+
+		while (myfile.good())
+		{
+			if (i > size - 1) break;
+			myfile >> *(data + i);
+			// cout << *(data+i) << ' '; // This line display the converted data on the screen, you may comment it out. 
+			i++;
+		}
+		myfile.close();
+	}
+
+	else std::cout << "Unable to open file";
+	std::cout << "Done " << fileName << std::endl;
+}
+
 
 
 // Converts a 1D array of doubles of size R*C to .pgm image of R rows and C Columns 

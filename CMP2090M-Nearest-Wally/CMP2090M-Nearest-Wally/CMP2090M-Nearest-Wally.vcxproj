@@ -157,7 +157,7 @@
     <ClInclude Include="IOFunctions.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CMP2090M-Nearest-Wally.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="IOFunctions.cpp" />
   </ItemGroup>

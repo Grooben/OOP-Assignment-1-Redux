@@ -15,18 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IOFunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="CMP2090M-Nearest-Wally.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CMP2090M-Nearest-Wally.cpp">
+    <ClCompile Include="IOFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

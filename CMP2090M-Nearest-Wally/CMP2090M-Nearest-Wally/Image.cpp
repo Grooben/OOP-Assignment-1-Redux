@@ -18,6 +18,11 @@ void Image::setImgValue(int loc, double indv)
 	img[loc] = indv;
 }
 
+double Image::getImgValue(int loc)
+{
+	return this->img[loc];
+}
+
 // Constructors below.
 // Default constructor
 Image::Image() { }
@@ -30,6 +35,12 @@ Image::Image(int rows, int cols)
 	this->size = sizeR * sizeC;
 
 	this->img = new double[size];
+
+}
+
+Image::Image(double * data)
+{
+	this->img = data;
 }
 
 // Default Destructor

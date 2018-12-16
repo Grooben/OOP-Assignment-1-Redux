@@ -156,11 +156,13 @@
   <ItemGroup>
     <ClInclude Include="Image.h" />
     <ClInclude Include="IOFunctions.h" />
+    <ClInclude Include="SearchFunctions.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="IOFunctions.cpp" />
+    <ClCompile Include="SearchFunctions.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

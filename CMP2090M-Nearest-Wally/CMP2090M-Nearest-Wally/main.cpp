@@ -27,6 +27,8 @@ int main()
 	std::thread WallyGeneration(wallyThreadWrapper, wallyPath, wallyTmp, wallySize);
 	SceneGeneration.join();
 	WallyGeneration.join();
+
+	system("pause");
 }
 
 void sceneThreadWrapper(const char *fileName, double *data, const int size)

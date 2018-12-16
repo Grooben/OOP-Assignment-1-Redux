@@ -48,12 +48,3 @@ void wallyThreadWrapper(const char *fileName, double *data, const int size)
 	Image* wally = new Image(data);
 	std::cout << "First value of Wally is: " << wally->getImgValue(0) << std::endl;
 }
-
-/*void threadWrapper(const char *fileName, const char *outFile)
-{
-	IO io;
-	std::cout << "Processing " << fileName << "..." << std::endl;
-	int rows = io.countRows(fileName);
-	int cols = io.countCols(fileName);
-	io.read_text(fileName, rows, cols, outFile);
-}*/

@@ -156,12 +156,16 @@
   <ItemGroup>
     <ClInclude Include="Image.h" />
     <ClInclude Include="IOFunctions.h" />
+    <ClInclude Include="LargeImage.h" />
+    <ClInclude Include="RefImage.h" />
     <ClInclude Include="SearchFunctions.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="LargeImage.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="IOFunctions.cpp" />
+    <ClCompile Include="RefImage.cpp" />
     <ClCompile Include="SearchFunctions.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

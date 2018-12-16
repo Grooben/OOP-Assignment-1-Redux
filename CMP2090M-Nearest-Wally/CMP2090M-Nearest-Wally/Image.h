@@ -7,6 +7,7 @@ public:
 	void setImage(double* img);
 	void setImgValue(int loc, double indv);
 	double getImgValue(int loc);
+
 	// Default constructor/destructor
 	Image();
 	~Image();

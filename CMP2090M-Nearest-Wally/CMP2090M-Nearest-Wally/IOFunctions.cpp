@@ -8,8 +8,8 @@ int IO::countRows(const char *fileName)
 {
 	int rowCount = 0;
 	std::ifstream TxtFile(fileName);
-	rowCount = std::count(std::istreambuf_iterator<char>(TxtFile), std::istreambuf_iterator<char>(), '\n');
-	return rowCount;
+	rowCount = std::count(std::istreambuf_iterator<char>(TxtFile), std::istreambuf_iterator<char>(), '\n'); // Iterate through all columns in file to count 
+	return rowCount; // Return number of rows
 }
 
 int IO::countCols(const char *fileName)
@@ -18,8 +18,8 @@ int IO::countCols(const char *fileName)
 	std::ifstream TxtFile(fileName);
 	std::string tmp;
 	std::getline(TxtFile, tmp);
-	colCount = (std::count(tmp.begin(), tmp.end(), '\t') + std::count(tmp.begin(), tmp.end(), ' ') + 1) / 2;
-	return colCount;
+	colCount = (std::count(tmp.begin(), tmp.end(), '\t') + std::count(tmp.begin(), tmp.end(), ' ') + 1) / 2; // Iterate though colums, and half the result due to the use of double spacing
+	return colCount; // Return number of columns
 }
 
 double* IO::read_text(const char *fileName, int sizeR, int sizeC, const char *outFile)

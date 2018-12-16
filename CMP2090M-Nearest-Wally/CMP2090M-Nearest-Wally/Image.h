@@ -14,6 +14,7 @@ public:
 	//Constructors
 	Image(int rows, int cols);
 	Image(double* data);
+	
 	int sizeR, sizeC, size;
 
 protected:

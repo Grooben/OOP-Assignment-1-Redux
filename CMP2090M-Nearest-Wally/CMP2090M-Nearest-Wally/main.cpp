@@ -2,13 +2,13 @@
 
 #include "IOFunctions.h"
 #include "Image.h"
+#include "SearchFunctions.h"
 #include <iostream>
 #include <vector>
 #include <thread>
 
-void sceneThreadWrapper(const char *fileName, double *data, const int size);
-void wallyThreadWrapper(const char *fileName, double *data, const int size);
-//void threadWrapper(const char *fileName, const char *outFile);
+void sceneThreadWrapper(const char *fileName, double *data, const int size, Image* scene);
+void wallyThreadWrapper(const char *fileName, double *data, const int size, Image* wally);
 
 int main()
 {
@@ -23,28 +23,32 @@ int main()
 	double* sceneTmp = new double[sceneSize];
 	double* wallyTmp = new double[wallySize];
 
-	std::thread SceneGeneration(sceneThreadWrapper, scenePath, sceneTmp, sceneSize);
-	std::thread WallyGeneration(wallyThreadWrapper, wallyPath, wallyTmp, wallySize);
+	Image* scene = new Image();
+	Image* wally = new Image();
+
+	std::thread SceneGeneration(sceneThreadWrapper, scenePath, sceneTmp, sceneSize, scene);
+	std::thread WallyGeneration(wallyThreadWrapper, wallyPath, wallyTmp, wallySize, wally);
 	SceneGeneration.join();
 	WallyGeneration.join();
+
+	std::cout << "First value of Scene is: " << scene->getImgValue(0) << std::endl;
+	std::cout << "First value of Wally is: " << wally->getImgValue(0) << std::endl;
 
 	system("pause");
 }
 
-void sceneThreadWrapper(const char *fileName, double *data, const int size)
+void sceneThreadWrapper(const char *fileName, double *data, const int size, Image* scene)
 {
 	IO io;
 	std::cout << "Processing " << fileName << "..." << std::endl;
 	io.read_text(fileName, data, size);
-	Image* scene = new Image(data);
-	std::cout << "First value of Scene is: " << scene->getImgValue(0) << std::endl;
+	scene->setImage(data);
 }
 
-void wallyThreadWrapper(const char *fileName, double *data, const int size)
+void wallyThreadWrapper(const char *fileName, double *data, const int size, Image* wally)
 {
 	IO io;
 	std::cout << "Processing " << fileName << "..." << std::endl;
 	io.read_text(fileName, data, size);
-	Image* wally = new Image(data);
-	std::cout << "First value of Wally is: " << wally->getImgValue(0) << std::endl;
+	wally->setImage(data);
 }

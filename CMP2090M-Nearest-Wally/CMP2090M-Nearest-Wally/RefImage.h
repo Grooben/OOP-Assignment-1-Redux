@@ -1,7 +1,7 @@
 #pragma once
-#include "Image.h"
+#include "BaseImage.h"
 class RefImage :
-	public Image
+	public BaseImage
 {
 public:
 	RefImage();

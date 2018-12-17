@@ -1,7 +1,7 @@
 #pragma once
-#include "Image.h"
+#include "BaseImage.h"
 class LargeImage :
-	public Image
+	public BaseImage
 {
 public:
 	LargeImage();

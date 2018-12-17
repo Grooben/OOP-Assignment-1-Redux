@@ -1,9 +1,9 @@
 #pragma once
-#include "Image.h"
+#include "BaseImage.h"
 class SearchFunctions
 {
 public:
-	void nearestNeighbour(Image wally, Image ref);
-	void linearSearch(Image wally, Image ref);
+	void nearestNeighbour(BaseImage wally, BaseImage ref);
+	void linearSearch(BaseImage wally, BaseImage ref);
 };
 

@@ -1,34 +1,34 @@
-#include "Image.h"
+#include "BaseImage.h"
 
 // Accessor & Mutator Functions below.
 // Get the Entire Image Arr:
-double* Image::getImage()
+double* BaseImage::getImage()
 {
 	return img;
 }
 // Set the entire Image Arr:
-void Image::setImage(double* image)
+void BaseImage::setImage(double* image)
 {
 	this->img = image;
 }
 // Set an individual value in the image array, by passing the location of the value,
 // and the value it replaces.
-void Image::setImgValue(int loc, double indv)
+void BaseImage::setImgValue(int loc, double indv)
 {
 	img[loc] = indv;
 }
 
-double Image::getImgValue(int loc)
+double BaseImage::getImgValue(int loc)
 {
 	return this->img[loc];
 }
 
 // Constructors below.
 // Default constructor
-Image::Image() { }
+BaseImage::BaseImage() { }
 
 // Constructor that takes rows & cols to initialise an array of doubles.
-Image::Image(int rows, int cols)
+BaseImage::BaseImage(int rows, int cols)
 {
 	this->sizeR = rows;
 	this->sizeC = cols;
@@ -38,13 +38,13 @@ Image::Image(int rows, int cols)
 
 }
 
-Image::Image(double * data)
+BaseImage::BaseImage(double * data)
 {
 	this->img = data;
 }
 
 // Default Destructor
-Image::~Image()
+BaseImage::~BaseImage()
 {
 	delete[] img;
 }

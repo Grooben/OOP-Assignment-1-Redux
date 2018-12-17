@@ -1,11 +1,11 @@
 #include "SearchFunctions.h"
 
-void SearchFunctions::nearestNeighbour(Image wally, Image ref)
+void SearchFunctions::nearestNeighbour(BaseImage wally, BaseImage ref)
 {
 	// NNS Logic to be inserted here
 }
 
-void SearchFunctions::linearSearch(Image wally, Image ref)
+void SearchFunctions::linearSearch(BaseImage wally, BaseImage ref)
 {
 	// Linear Logic to be inserted here
 }

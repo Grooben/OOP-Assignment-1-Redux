@@ -1,14 +1,14 @@
 // main.cpp : This file contains the 'main' function. Program execution begins and ends there.
 
 #include "IOFunctions.h"
-#include "Image.h"
+#include "BaseImage.h"
 #include "SearchFunctions.h"
 #include <iostream>
 #include <vector>
 #include <thread>
 
-void sceneThreadWrapper(const char *fileName, double *data, const int size, Image* scene);
-void wallyThreadWrapper(const char *fileName, double *data, const int size, Image* wally);
+void sceneThreadWrapper(const char *fileName, double *data, const int size, BaseImage* scene);
+void wallyThreadWrapper(const char *fileName, double *data, const int size, BaseImage* wally);
 
 int main()
 {
@@ -25,8 +25,8 @@ int main()
 	double* wallyTmp = new double[wallySize];
 
 	// Create "Image" Object using default (blank) constructors
-	Image* scene = new Image();
-	Image* wally = new Image();
+	BaseImage* scene = new BaseImage();
+	BaseImage* wally = new BaseImage();
 
 	// Using threading to enhance execution time of the program
 	std::thread SceneGeneration(sceneThreadWrapper, scenePath, sceneTmp, sceneSize, scene);
@@ -43,7 +43,7 @@ int main()
 	system("pause"); // Pause after program execution
 }
 
-void sceneThreadWrapper(const char *fileName, double *data, const int size, Image* scene)
+void sceneThreadWrapper(const char *fileName, double *data, const int size, BaseImage* scene)
 {
 	IO io; // Create IO object
 	std::cout << "Processing " << fileName << "..." << std::endl;
@@ -51,7 +51,7 @@ void sceneThreadWrapper(const char *fileName, double *data, const int size, Imag
 	scene->setImage(data); // Use defined mutator to populate object with values
 }
 
-void wallyThreadWrapper(const char *fileName, double *data, const int size, Image* wally)
+void wallyThreadWrapper(const char *fileName, double *data, const int size, BaseImage* wally)
 {
 	// Wrapper function works as above
 	IO io; 

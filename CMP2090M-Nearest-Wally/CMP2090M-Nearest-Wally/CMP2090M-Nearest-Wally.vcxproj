@@ -154,7 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Image.h" />
+    <ClInclude Include="BaseImage.h" />
     <ClInclude Include="IOFunctions.h" />
     <ClInclude Include="LargeImage.h" />
     <ClInclude Include="RefImage.h" />
@@ -163,7 +163,7 @@
   <ItemGroup>
     <ClCompile Include="LargeImage.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Image.cpp" />
+    <ClCompile Include="BaseImage.cpp" />
     <ClCompile Include="IOFunctions.cpp" />
     <ClCompile Include="RefImage.cpp" />
     <ClCompile Include="SearchFunctions.cpp" />

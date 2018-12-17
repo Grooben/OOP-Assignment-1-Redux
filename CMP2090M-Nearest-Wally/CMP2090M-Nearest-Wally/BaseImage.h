@@ -1,5 +1,5 @@
 #pragma once
-class Image
+class BaseImage
 {
 public:
 	//Accessor & Mutator functions
@@ -9,12 +9,12 @@ public:
 	double getImgValue(int loc);
 
 	// Default constructor/destructor
-	Image();
-	~Image();
+	BaseImage();
+	~BaseImage();
 
 	//Constructors
-	Image(int rows, int cols);
-	Image(double* data);
+	BaseImage(int rows, int cols);
+	BaseImage(double* data);
 	
 	int sizeR, sizeC, size;
 

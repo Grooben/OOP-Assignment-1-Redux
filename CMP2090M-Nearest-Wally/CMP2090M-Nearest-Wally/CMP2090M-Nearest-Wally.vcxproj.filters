@@ -41,12 +41,6 @@
     <ClCompile Include="SearchFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RefImage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LargeImage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BaseImage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

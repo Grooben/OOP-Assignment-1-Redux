@@ -161,11 +161,9 @@
     <ClInclude Include="SearchFunctions.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LargeImage.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="BaseImage.cpp" />
     <ClCompile Include="IOFunctions.cpp" />
-    <ClCompile Include="RefImage.cpp" />
     <ClCompile Include="SearchFunctions.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

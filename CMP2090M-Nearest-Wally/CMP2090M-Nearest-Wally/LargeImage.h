@@ -4,10 +4,5 @@ class LargeImage :
 	public BaseImage
 {
 public:
-	LargeImage();
-	~LargeImage();
-
-	// Inherit constructors from base class
-	BaseImage::BaseImage;
 };
 

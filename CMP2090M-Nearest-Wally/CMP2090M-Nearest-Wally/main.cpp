@@ -51,7 +51,7 @@ int main()
 
 	SearchFunctions sf; // Create SearchFunctions object
 
-	sf.linearSearch(wally, scene); // Perform Linear Search on Scene
+	sf.linearSearch(wally, scene, sceneSize); // Perform Linear Search on Scene
 
 	system("pause"); // Pause after program execution
 }

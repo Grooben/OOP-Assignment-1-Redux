@@ -23,6 +23,11 @@ double BaseImage::getImgValue(int loc)
 	return this->img[loc];
 }
 
+double BaseImage::getImgValue(int x, int y)
+{
+	return this->img[x + (y * this->sizeC)];
+}
+
 // Constructors below.
 // Default constructor
 BaseImage::BaseImage() { }

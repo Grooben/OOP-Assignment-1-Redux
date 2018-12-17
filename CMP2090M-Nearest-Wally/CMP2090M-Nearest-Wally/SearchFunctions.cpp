@@ -7,5 +7,8 @@ void SearchFunctions::nearestNeighbour(BaseImage wally, BaseImage ref)
 
 void SearchFunctions::linearSearch(RefImage* wally, LargeImage* ref, const int size)
 {
-	for (i = 0; i < )
+	for (int i = 0; i < size; i++)
+	{
+		if (ref->getImgValue());
+	}
 }

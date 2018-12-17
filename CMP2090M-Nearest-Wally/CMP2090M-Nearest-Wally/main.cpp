@@ -1,4 +1,7 @@
-// main.cpp : This file contains the 'main' function. Program execution begins and ends there.
+/* 
+* Program: CMP2090M - Nearest Wally. A program to find a reference image in a larger image
+* Author: Oliver Martin Grooby GRO16605155
+*/
 
 #include "IOFunctions.h"
 #include "BaseImage.h"

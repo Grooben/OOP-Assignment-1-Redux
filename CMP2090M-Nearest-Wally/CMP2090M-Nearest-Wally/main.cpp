@@ -35,7 +35,7 @@ int main()
 	double* sceneTmp = new double[sceneSize];
 	double* wallyTmp = new double[wallySize];
 
-	// Create "Image" Object using default (blank) constructors
+	// Create empty objects using default (blank) constructors
 	LargeImage* scene = new LargeImage();
 	RefImage* wally = new RefImage();
 
@@ -48,6 +48,10 @@ int main()
 	// Peform sanity check on both objects
 	std::cout << "First value of Scene is: " << scene->getImgValue(0) << std::endl;
 	std::cout << "First value of Wally is: " << wally->getImgValue(0) << std::endl;
+
+	SearchFunctions sf; // Create SearchFunctions object
+
+	sf.linearSearch(wally, scene); // Perform Linear Search on Scene
 
 	system("pause"); // Pause after program execution
 }

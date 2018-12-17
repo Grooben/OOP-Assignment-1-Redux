@@ -19,8 +19,14 @@ int main()
 	// Some useful consts
 	const char *scenePath = "Cluttered_scene.txt";
 	const char *wallyPath = "Wally_grey.txt";
-	const int sceneSize = 768 * 1024;
-	const int wallySize = 36 * 49;
+
+	const int scSzR = 768;
+	const int scSzC = 1024;
+	const int sceneSize = scSzR * scSzC;
+
+	const int wlSzR = 36;
+	const int wlSzC = 49;
+	const int wallySize = wlSzR * wlSzC;
 
 	// Create a temporary store to hold the images in, until copied to their respective objects
 	double* sceneTmp = new double[sceneSize];
@@ -34,9 +40,7 @@ int main()
 	std::thread SceneGeneration(sceneThreadWrapper, scenePath, sceneTmp, sceneSize, scene);
 	std::thread WallyGeneration(wallyThreadWrapper, wallyPath, wallyTmp, wallySize, wally);
 	SceneGeneration.join();
-	//delete[] sceneTmp; // Delete tempororary array to free unused memory
 	WallyGeneration.join();
-	//delete[] wallyTmp;
 
 	// Peform sanity check on both objects
 	std::cout << "First value of Scene is: " << scene->getImgValue(0) << std::endl;

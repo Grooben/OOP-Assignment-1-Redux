@@ -32,9 +32,9 @@ int main()
 	std::thread SceneGeneration(sceneThreadWrapper, scenePath, sceneTmp, sceneSize, scene);
 	std::thread WallyGeneration(wallyThreadWrapper, wallyPath, wallyTmp, wallySize, wally);
 	SceneGeneration.join();
-	delete[] sceneTmp; // Delete tempororary array to free unused memory
+	//delete[] sceneTmp; // Delete tempororary array to free unused memory
 	WallyGeneration.join();
-	delete[] wallyTmp;
+	//delete[] wallyTmp;
 
 	// Peform sanity check on both objects
 	std::cout << "First value of Scene is: " << scene->getImgValue(0) << std::endl;

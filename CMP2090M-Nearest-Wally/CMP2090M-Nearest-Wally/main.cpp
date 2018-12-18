@@ -32,16 +32,16 @@ int main()
 	const int wallySize = wlSzR * wlSzC;
 
 	// Create a temporary store to hold the images in, until copied to their respective objects
-	double* sceneTmp = new double[sceneSize];
-	double* wallyTmp = new double[wallySize];
+	double* sceneArr = new double[sceneSize];
+	double* wallyArr = new double[wallySize];
 
 	// Create "Image" Object using a defined size
 	LargeImage* scene = new LargeImage(scSzR, scSzC);
 	RefImage* wally = new RefImage(wlSzR, wlSzC);
 
 	// Using threading to enhance execution time of the program
-	std::thread SceneGeneration(sceneThreadWrapper, scenePath, sceneTmp, sceneSize, scene);
-	std::thread WallyGeneration(wallyThreadWrapper, wallyPath, wallyTmp, wallySize, wally);
+	std::thread SceneGeneration(sceneThreadWrapper, scenePath, sceneArr, sceneSize, scene);
+	std::thread WallyGeneration(wallyThreadWrapper, wallyPath, wallyArr, wallySize, wally);
 	SceneGeneration.join();
 	WallyGeneration.join();
 

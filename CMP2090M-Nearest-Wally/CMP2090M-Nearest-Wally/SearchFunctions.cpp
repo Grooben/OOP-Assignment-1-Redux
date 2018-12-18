@@ -14,7 +14,7 @@ void SearchFunctions::linearSearch(RefImage* wally, LargeImage* ref)
 	{
 		if (ref->getImgValue(i, i) == wally->getImgValue(30, 1))
 		{
-			std::cout << "Made a match using I,I" << std::endl;
+			std::cout << "Made a match at:" << i << "," << i << std::endl;
 		}
 	}
 }

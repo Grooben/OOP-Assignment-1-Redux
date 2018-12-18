@@ -4,5 +4,6 @@ class RefImage :
 	public BaseImage
 {
 public:
+	using BaseImage::BaseImage;
 };
 

@@ -4,5 +4,6 @@ class LargeImage :
 	public BaseImage
 {
 public:
+	using BaseImage::BaseImage;
 };
 

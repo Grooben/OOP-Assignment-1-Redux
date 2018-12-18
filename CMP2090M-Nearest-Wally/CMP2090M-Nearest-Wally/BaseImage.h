@@ -8,13 +8,12 @@ public:
 	void setImgValue(int loc, double indv);
 	double getImgValue(int loc);
 	double getImgValue(int x, int y);
-
 	// Default constructor/destructor
 	BaseImage();
 	~BaseImage();
 
 	//Constructors
-	BaseImage(int rows, int cols);
+	BaseImage(const int rows, const int cols);
 	BaseImage(double* data);
 	
 	int sizeR, sizeC, size;

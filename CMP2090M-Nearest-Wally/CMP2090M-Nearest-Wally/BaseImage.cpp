@@ -23,6 +23,7 @@ double BaseImage::getImgValue(int loc)
 	return this->img[loc];
 }
 
+
 double BaseImage::getImgValue(int x, int y)
 {
 	return this->img[x + (y * this->sizeC)];
@@ -33,7 +34,7 @@ double BaseImage::getImgValue(int x, int y)
 BaseImage::BaseImage() { }
 
 // Constructor that takes rows & cols to initialise an array of doubles.
-BaseImage::BaseImage(int rows, int cols)
+BaseImage::BaseImage(const int rows, const int cols)
 {
 	this->sizeR = rows;
 	this->sizeC = cols;

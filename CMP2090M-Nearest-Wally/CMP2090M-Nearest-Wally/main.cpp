@@ -35,9 +35,10 @@ int main()
 	double* sceneTmp = new double[sceneSize];
 	double* wallyTmp = new double[wallySize];
 
-	// Create empty objects using default (blank) constructors
-	LargeImage* scene = new LargeImage();
-	RefImage* wally = new RefImage();
+	// Create "Image" Object using a defined size
+	// This is currently inefficient due to effectively doubling array size due to shallow copy.
+	LargeImage* scene = new LargeImage(scSzR, scSzC);
+	RefImage* wally = new RefImage(wlSzR, wlSzC);
 
 	// Using threading to enhance execution time of the program
 	std::thread SceneGeneration(sceneThreadWrapper, scenePath, sceneTmp, sceneSize, scene);
@@ -49,9 +50,12 @@ int main()
 	std::cout << "First value of Scene is: " << scene->getImgValue(0) << std::endl;
 	std::cout << "First value of Wally is: " << wally->getImgValue(0) << std::endl;
 
-	SearchFunctions sf; // Create SearchFunctions object
 
-	sf.linearSearch(wally, scene, sceneSize); // Perform Linear Search on Scene
+	//SearchFunctions sf; // Create SearchFunctions object
+
+	// Delete pointers before exiting
+	delete scene;
+	delete wally;
 
 	system("pause"); // Pause after program execution
 }

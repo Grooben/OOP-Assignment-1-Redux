@@ -8,6 +8,7 @@ public:
 	void setImgValue(int loc, double indv);
 	double getImgValue(int loc);
 	double getImgValue(int row, int col);
+
 	// Default constructor/destructor
 	BaseImage();
 	~BaseImage();

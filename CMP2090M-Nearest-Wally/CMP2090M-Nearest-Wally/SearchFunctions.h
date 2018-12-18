@@ -5,6 +5,8 @@ class SearchFunctions
 {
 public:
 	void nearestNeighbour(BaseImage wally, BaseImage ref);
-	void linearSearch(RefImage * wally, LargeImage * ref);
+	void search(RefImage * wally, LargeImage * ref, const int size);
+private:
+	double linear(int j, int k);
 };
 

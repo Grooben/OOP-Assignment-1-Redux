@@ -46,10 +46,10 @@ int main()
 	WallyGeneration.join();
 
 	// Peform sanity check on both objects
-	std::cout << "First value of Scene is: " << scene->getImgValue(0) << std::endl;
-	std::cout << "First value of Wally is: " << wally->getImgValue(0) << std::endl;
+	//std::cout << "First value of Scene is: " << scene->getImgValue(0) << std::endl;
+	//std::cout << "First value of Wally is: " << wally->getImgValue(0) << std::endl;
 
-	sf.linearSearch(wally, scene);
+	sf.search(wally, scene, wallySize);
 
 	// Delete pointers before exiting
 	delete scene;

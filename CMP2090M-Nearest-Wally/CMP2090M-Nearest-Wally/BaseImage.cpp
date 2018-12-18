@@ -28,7 +28,7 @@ double BaseImage::getImgValue(int row, int col)
 {
 	// NB: Image pixel co-ords start at 0,0
 	// ROW = X, COL = Y
-	return this->img[row + (col * this->sizeR)];
+	return this->img[row + (col * this->sizeC)];
 }
 
 // Constructors below.

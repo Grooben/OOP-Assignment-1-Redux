@@ -3,8 +3,6 @@
 * Author: Oliver Martin Grooby GRO16605155
 */
 
-// TODO: ROWS AND COLS ARE MIXED UP AND NEED TO BE FIXED!!
-
 #include "IOFunctions.h"
 #include "BaseImage.h"
 #include "LargeImage.h"
@@ -27,8 +25,8 @@ int main()
 	const int scSzR = 768;
 	const int scSzC = 1024;
 	const int sceneSize = scSzR * scSzC;
-	const int wlSzR = 36;
-	const int wlSzC = 49;
+	const int wlSzR = 49;
+	const int wlSzC = 36;
 	const int wallySize = wlSzR * wlSzC;
 
 	// Create a temporary store to hold the images in, until copied to their respective objects
@@ -57,7 +55,8 @@ int main()
 	std::cout << "47th value of Wally is: " << wally->getImgValue(48) << std::endl;
 
 
-	std::cout << std::endl << wally->getImgValue(12, 1); // This appears to work best with scene but not wally - Investigate.
+	std::cout << std::endl << wally->getImgValue(12, 2); // This appears to work best with scene but not wally - Investigate.
+	std::cout << std::endl << scene->getImgValue(12, 2);
 
 	sf.linearSearch(wally, scene);
 

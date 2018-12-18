@@ -55,7 +55,7 @@ int main()
 	delete scene;
 	delete wally;
 
-	//system("pause"); // Pause after program execution
+	system("pause"); // Pause after program execution
 }
 
 void sceneThreadWrapper(const char *fileName, double *data, const int size, LargeImage* scene)

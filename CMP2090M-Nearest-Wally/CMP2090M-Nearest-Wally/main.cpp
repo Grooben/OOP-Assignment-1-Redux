@@ -36,7 +36,6 @@ int main()
 	double* wallyTmp = new double[wallySize];
 
 	// Create "Image" Object using a defined size
-	// This is currently inefficient due to effectively doubling array size due to shallow copy.
 	LargeImage* scene = new LargeImage(scSzR, scSzC);
 	RefImage* wally = new RefImage(wlSzR, wlSzC);
 
@@ -50,14 +49,18 @@ int main()
 	std::cout << "First value of Scene is: " << scene->getImgValue(0) << std::endl;
 	std::cout << "First value of Wally is: " << wally->getImgValue(0) << std::endl;
 
+	std::cout << std::endl << wally->getImgValue(35, 48);
+	// This appears to work best with scene but not wally - Investigate.
 
-	//SearchFunctions sf; // Create SearchFunctions object
+	SearchFunctions sf; // Create SearchFunctions object
+
+	sf.linearSearch(wally, scene);
 
 	// Delete pointers before exiting
 	delete scene;
 	delete wally;
 
-	system("pause"); // Pause after program execution
+	//system("pause"); // Pause after program execution
 }
 
 void sceneThreadWrapper(const char *fileName, double *data, const int size, LargeImage* scene)

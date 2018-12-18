@@ -26,7 +26,8 @@ double BaseImage::getImgValue(int loc)
 
 double BaseImage::getImgValue(int x, int y)
 {
-	return this->img[x + (y * this->sizeC)];
+	// NB: Image pixel co-ords start at 0,0
+	return this->img[y + (x * this->sizeC)];
 }
 
 // Constructors below.
@@ -39,9 +40,7 @@ BaseImage::BaseImage(const int rows, const int cols)
 	this->sizeR = rows;
 	this->sizeC = cols;
 	this->size = sizeR * sizeC;
-
-	this->img = new double[size];
-
+	// TODO: Investigate hard copy method
 }
 
 BaseImage::BaseImage(double * data)

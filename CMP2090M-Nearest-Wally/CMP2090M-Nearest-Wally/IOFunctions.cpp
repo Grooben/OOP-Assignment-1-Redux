@@ -57,7 +57,7 @@ void IO::read_text(const char * fileName, double * data, const int size)
 		{
 			if (i > size - 1) break;
 			myfile >> *(data + i);
-			// cout << *(data+i) << ' '; // This line display the converted data on the screen, you may comment it out. 
+			//std::cout << *(data+i) << ' '; // This line display the converted data on the screen, you may comment it out. 
 			i++;
 		}
 		myfile.close();

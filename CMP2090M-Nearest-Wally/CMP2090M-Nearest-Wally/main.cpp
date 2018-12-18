@@ -3,6 +3,8 @@
 * Author: Oliver Martin Grooby GRO16605155
 */
 
+// TODO: ROWS AND COLS ARE MIXED UP AND NEED TO BE FIXED!!
+
 #include "IOFunctions.h"
 #include "BaseImage.h"
 #include "LargeImage.h"
@@ -45,11 +47,17 @@ int main()
 	SceneGeneration.join();
 	WallyGeneration.join();
 
+	/*for (int i = 0; i <= wally->size - 1; i++)
+	{
+		std::cout << wally->getImgValue(i) << std::endl;
+	}*/
+
 	// Peform sanity check on both objects
 	std::cout << "First value of Scene is: " << scene->getImgValue(0) << std::endl;
-	std::cout << "First value of Wally is: " << wally->getImgValue(0) << std::endl;
+	std::cout << "47th value of Wally is: " << wally->getImgValue(48) << std::endl;
 
-	std::cout << std::endl << wally->getImgValue(35, 48); // This appears to work best with scene but not wally - Investigate.
+
+	std::cout << std::endl << wally->getImgValue(12, 1); // This appears to work best with scene but not wally - Investigate.
 
 	sf.linearSearch(wally, scene);
 

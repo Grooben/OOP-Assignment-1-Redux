@@ -17,7 +17,7 @@ void wallyThreadWrapper(const char *fileName, double *data, const int size, RefI
 
 int main()
 {
-    std::cout << "CMP2090M, Oliver Grooby, GRO16605155\n";
+	std::cout << "CMP2090M, Oliver Grooby, GRO16605155" << std::endl;
 
 	// Some useful consts
 	const char *scenePath = "Cluttered_scene.txt";
@@ -39,16 +39,15 @@ int main()
 
 	SearchFunctions sf; // Create SearchFunctions object
 
+	std::cout << std::endl << "Reading files into Memory..." << std::endl << std::endl;
+
 	// Using threading to enhance execution time of the program
 	std::thread SceneGeneration(sceneThreadWrapper, scenePath, sceneArr, sceneSize, scene);
 	std::thread WallyGeneration(wallyThreadWrapper, wallyPath, wallyArr, wallySize, wally);
 	SceneGeneration.join();
 	WallyGeneration.join();
 
-	// Peform sanity check on both objects
-	//std::cout << "First value of Scene is: " << scene->getImgValue(0) << std::endl;
-	//std::cout << "First value of Wally is: " << wally->getImgValue(0) << std::endl;
-
+	// Enter main logic
 	sf.search(wally, scene, wallySize);
 
 	// Delete objects before exiting
@@ -61,7 +60,6 @@ int main()
 void sceneThreadWrapper(const char *fileName, double *data, const int size, LargeImage* scene)
 {
 	IO io; // Create IO object
-	std::cout << "Processing " << fileName << "..." << std::endl;
 	io.read_text(fileName, data, size); // Pass fileName, temporary array and array size to read_text function
 	scene->setImage(data); // Use defined mutator to populate object with values
 }
@@ -70,7 +68,6 @@ void wallyThreadWrapper(const char *fileName, double *data, const int size, RefI
 {
 	// Wrapper function works as above
 	IO io; 
-	std::cout << "Processing " << fileName << "..." << std::endl;
 	io.read_text(fileName, data, size);
 	wally->setImage(data);
 }

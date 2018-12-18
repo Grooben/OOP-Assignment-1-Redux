@@ -7,7 +7,7 @@
 void SearchFunctions::search(RefImage* wally, LargeImage* ref, const int size)
 {
 	std::vector<Result> results;
-	std::cout << "Finding Wally" << std::endl;
+	std::cout << std::endl << "Finding Wally, this could take some time (aprox. 40-50 secs on Release)" << std::endl;
 	for (int k = 0; k < ref->sizeR - wally->sizeR; k++)
 	{
 		for (int j = 0; j < ref->sizeC - wally->sizeC; j++)
@@ -15,11 +15,11 @@ void SearchFunctions::search(RefImage* wally, LargeImage* ref, const int size)
 			results.push_back(Result::Result(linear(wally, ref, j, k), j, k));
 		}
 	}
-	std::cout << "Sorting results..." << std::endl;
+	std::cout << "Done! Sorting results..." << std::endl << std::endl;
 	std::sort(results.begin(), results.end(), CompareResult);
 	for (int i = 0; i < 10; i++)
 	{
-		std::cout << "SSD Value: " << results[i].value << " "  <<
+		std::cout << "Rank " << i + 1 <<" SSD Value: " << results[i].value << " "  <<
 			"X: "<< results[i].x << " Y: " << results[i].y << std::endl;
 	}
 }

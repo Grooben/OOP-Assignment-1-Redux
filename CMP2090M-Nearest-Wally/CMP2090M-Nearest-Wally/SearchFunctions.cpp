@@ -4,12 +4,6 @@
 #include <vector>
 #include <algorithm> 
 
-void SearchFunctions::nearestNeighbour(BaseImage wally, BaseImage ref)
-{
-	// NNS Logic to be inserted here
-}
-
-
 void SearchFunctions::search(RefImage* wally, LargeImage* ref, const int size)
 {
 	std::vector<Result> results;

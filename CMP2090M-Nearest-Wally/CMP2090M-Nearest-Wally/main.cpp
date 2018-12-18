@@ -51,7 +51,7 @@ int main()
 
 	sf.search(wally, scene, wallySize);
 
-	// Delete pointers before exiting
+	// Delete objects before exiting
 	delete scene;
 	delete wally;
 

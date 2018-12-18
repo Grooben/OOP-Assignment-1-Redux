@@ -22,11 +22,9 @@ int main()
 	// Some useful consts
 	const char *scenePath = "Cluttered_scene.txt";
 	const char *wallyPath = "Wally_grey.txt";
-
 	const int scSzR = 768;
 	const int scSzC = 1024;
 	const int sceneSize = scSzR * scSzC;
-
 	const int wlSzR = 36;
 	const int wlSzC = 49;
 	const int wallySize = wlSzR * wlSzC;
@@ -39,6 +37,8 @@ int main()
 	LargeImage* scene = new LargeImage(scSzR, scSzC);
 	RefImage* wally = new RefImage(wlSzR, wlSzC);
 
+	SearchFunctions sf; // Create SearchFunctions object
+
 	// Using threading to enhance execution time of the program
 	std::thread SceneGeneration(sceneThreadWrapper, scenePath, sceneArr, sceneSize, scene);
 	std::thread WallyGeneration(wallyThreadWrapper, wallyPath, wallyArr, wallySize, wally);
@@ -49,10 +49,7 @@ int main()
 	std::cout << "First value of Scene is: " << scene->getImgValue(0) << std::endl;
 	std::cout << "First value of Wally is: " << wally->getImgValue(0) << std::endl;
 
-	std::cout << std::endl << wally->getImgValue(35, 48);
-	// This appears to work best with scene but not wally - Investigate.
-
-	SearchFunctions sf; // Create SearchFunctions object
+	std::cout << std::endl << wally->getImgValue(35, 48); // This appears to work best with scene but not wally - Investigate.
 
 	sf.linearSearch(wally, scene);
 

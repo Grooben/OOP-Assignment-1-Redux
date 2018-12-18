@@ -45,18 +45,9 @@ int main()
 	SceneGeneration.join();
 	WallyGeneration.join();
 
-	/*for (int i = 0; i <= wally->size - 1; i++)
-	{
-		std::cout << wally->getImgValue(i) << std::endl;
-	}*/
-
 	// Peform sanity check on both objects
 	std::cout << "First value of Scene is: " << scene->getImgValue(0) << std::endl;
-	std::cout << "47th value of Wally is: " << wally->getImgValue(48) << std::endl;
-
-
-	std::cout << std::endl << wally->getImgValue(12, 2); // This appears to work best with scene but not wally - Investigate.
-	std::cout << std::endl << scene->getImgValue(12, 2);
+	std::cout << "First value of Wally is: " << wally->getImgValue(0) << std::endl;
 
 	sf.linearSearch(wally, scene);
 

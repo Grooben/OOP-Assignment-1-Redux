@@ -7,6 +7,7 @@ public:
 	Matrix(int sizeR, int sizeC, LargeImage* image);
 	Matrix(int sizeR, int sizeC, RefImage* image);
 	double * shadeWallyBorder(double * sceneDoubles, int wallyRows, int wallyCols, int sceneCols, int WallyFoundRow, int WallyFoundCol);
+	double * shadeWallyBorder(double * sceneDoubles, int wallyRows, int wallyCols, int sceneCols, int WallyFoundRow, int WallyFoundCol, bool nth);
 	Matrix();
 	~Matrix();
 

@@ -1,5 +1,7 @@
 #include "SearchFunctions.h"
 #include "Result.h"
+#include "Matrix.h"
+#include "IOFunctions.h"
 #include <iostream>
 #include <vector>
 #include <algorithm> 
@@ -22,6 +24,16 @@ void SearchFunctions::search(RefImage* wally, LargeImage* ref, const int size)
 		std::cout << "Rank " << i + 1 <<" SSD Value: " << results[i].value << " "  <<
 			"X: "<< results[i].x << " Y: " << results[i].y << std::endl;
 	}
+	Matrix mt;
+	mt.shadeWallyBorder(ref->getImage(), wally->sizeR, wally->sizeC, ref->sizeC, results[0].y, results[0].x);
+	for (int i = 10; i >= 1; i--)
+	{
+		mt.shadeWallyBorder(ref->getImage(), wally->sizeR, wally->sizeC, ref->sizeC, results[i].y, results[i].x, true);
+	}
+		
+	IO io;
+	io.write_pgm("output.pgm", ref->getImage(),
+		ref->sizeR, ref->sizeC, 255);
 }
 
 double SearchFunctions::linear(RefImage* wally, LargeImage* ref, int j, int k)

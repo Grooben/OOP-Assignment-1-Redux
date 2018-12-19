@@ -1,7 +1,10 @@
 #include "Matrix.h"
 
 
+Matrix::Matrix()
+{
 
+}
 Matrix::Matrix(int sizeR, int sizeC, LargeImage * image)
 {
 
@@ -21,29 +24,45 @@ double* Matrix::shadeWallyBorder(double* sceneDoubles, int wallyRows, int wallyC
 
 	*/
 
-	/*for (int rowCount = WallyFoundRow; rowCount <= WallyFoundRow + wallyRows; rowCount++) { //colours horizontally from the starting point to the starting point + the amount of rows in the ref image (49)
+	for (int rowCount = WallyFoundRow; rowCount <= WallyFoundRow + wallyRows; rowCount++) { //colours horizontally from the starting point to the starting point + the amount of rows in the ref image (49)
 		for (int colCount = WallyFoundCol; colCount <= WallyFoundCol + wallyCols; colCount++) {//colours vertically from the starting point to the starting point + the amount of columns in the ref image (36)
 
 			if (rowCount == WallyFoundRow || rowCount == WallyFoundRow + wallyRows) { //Highlights Rows with a border 4 pixels high
 				for (int x = 0; x < 4; x++) {
-					_data[sceneCols * (rowCount - x) + (colCount - x)] = 1;
+					sceneDoubles[sceneCols * (rowCount - x) + (colCount - x)] = 1;
 				}
 			}
 
 			if (colCount == WallyFoundCol || colCount == WallyFoundCol + wallyCols) { //Highlights Columns with a border 4 pixels wide
 				for (int x = 0; x < 4; x++) {
-					_data[sceneCols * (rowCount - x) + (colCount - x)] = 1;
+					sceneDoubles[sceneCols * (rowCount - x) + (colCount - x)] = 1;
 				}
 			}
 		}
-	}*/
+	}
 	return sceneDoubles; //returns a new array of doubles to be passed into ReadWriteFunctions.cpp's WritePGM method, creating a PGM image in which the selected area is highlighted
 }
 
-Matrix::Matrix()
+double * Matrix::shadeWallyBorder(double * sceneDoubles, int wallyRows, int wallyCols, int sceneCols, int WallyFoundRow, int WallyFoundCol, bool nth)
 {
-}
+	for (int rowCount = WallyFoundRow; rowCount <= WallyFoundRow + wallyRows; rowCount++) { //colours horizontally from the starting point to the starting point + the amount of rows in the ref image (49)
+		for (int colCount = WallyFoundCol; colCount <= WallyFoundCol + wallyCols; colCount++) {//colours vertically from the starting point to the starting point + the amount of columns in the ref image (36)
 
+			if (rowCount == WallyFoundRow || rowCount == WallyFoundRow + wallyRows) { //Highlights Rows with a border 4 pixels high
+				for (int x = 0; x < 4; x++) {
+					sceneDoubles[sceneCols * (rowCount - x) + (colCount - x)] = 65;
+				}
+			}
+
+			if (colCount == WallyFoundCol || colCount == WallyFoundCol + wallyCols) { //Highlights Columns with a border 4 pixels wide
+				for (int x = 0; x < 4; x++) {
+					sceneDoubles[sceneCols * (rowCount - x) + (colCount - x)] = 50;
+				}
+			}
+		}
+	}
+	return sceneDoubles; //returns a new array of doubles to be passed into ReadWriteFunctions.cpp's WritePGM method, creating a PGM image in which the selected area is highlighted
+}
 
 Matrix::~Matrix()
 {

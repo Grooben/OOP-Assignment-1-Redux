@@ -4,6 +4,7 @@ class LargeImage :
 	public BaseImage
 {
 public:
+	// Inherit fully from BaseImage
 	using BaseImage::BaseImage;
 };
 

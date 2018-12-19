@@ -1,9 +1,12 @@
 #pragma once
 
+// Custom Struct to hold values from the linear search,
+// so that they can be easily sorted and referred to.
+
 struct Result
 {
-	double value;
-	int x, y;
+	double value; // Holds the SSD Value
+	int x, y; // Holds X and Y values of the result
 	Result()
 	{
 		this->value = 0.0;
@@ -18,7 +21,7 @@ struct Result
 	}
 };
 
-bool CompareResult(const Result &a, const Result &b)
+bool CompareResult(const Result &a, const Result &b) // Override sort function
 {
 	return a.value < b.value;
 }

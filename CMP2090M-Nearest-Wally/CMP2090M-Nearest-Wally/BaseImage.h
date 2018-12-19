@@ -20,6 +20,6 @@ public:
 	int sizeR, sizeC, size;
 
 protected:
-	double* img;
+	double* img; // Store the image as a protected variable
 };
 

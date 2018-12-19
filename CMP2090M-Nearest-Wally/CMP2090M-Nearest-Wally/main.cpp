@@ -13,6 +13,7 @@
 #include <vector>
 #include <thread>
 
+// Declare Thread Wrapper functions
 void sceneThreadWrapper(const char *fileName, double *data, const int size, LargeImage* scene);
 void wallyThreadWrapper(const char *fileName, double *data, const int size, RefImage* wally);
 
@@ -21,6 +22,7 @@ int main()
 	std::cout << "CMP2090M, Oliver Grooby, GRO16605155" << std::endl;
 
 	// Some useful consts
+	// PLEASE ensure that poth .txt files are in the same directory as the main.cpp file for the application to run correctly
 	const char *scenePath = "Cluttered_scene.txt";
 	const char *wallyPath = "Wally_grey.txt";
 	const int scSzR = 768;
@@ -34,9 +36,6 @@ int main()
 	double* sceneArr = new double[sceneSize];
 	double* wallyArr = new double[wallySize];
 
-	
-	Matrix* wallyMatrix = new Matrix();
-
 	// Create "Image" Object using a defined size
 	LargeImage* scene = new LargeImage(scSzR, scSzC);
 	RefImage* wally = new RefImage(wlSzR, wlSzC);
@@ -48,6 +47,8 @@ int main()
 	// Using threading to enhance execution time of the program
 	std::thread SceneGeneration(sceneThreadWrapper, scenePath, sceneArr, sceneSize, scene);
 	std::thread WallyGeneration(wallyThreadWrapper, wallyPath, wallyArr, wallySize, wally);
+
+	// Allow both threads to complete before moving on
 	SceneGeneration.join();
 	WallyGeneration.join();
 

@@ -4,6 +4,7 @@
 
 double Matrix::Get2DLocation(LargeImage* data, int x, int y)
 {
+	// Allows given 1D array as part of an object to be traversed as a 2D array
 	return data->getImgValue(x + (y * data->sizeC));
 }
 
@@ -12,20 +13,20 @@ double Matrix::Get2DLocation(RefImage* data, int x, int y)
 	return data->getImgValue(x + (y * data->sizeC));
 }
 
-double* Matrix::shadeWallyBorder(double* data, int refR, int refC, int sizeC, int resRow, int resCol) {
-
-	for (int rowCount = resRow; rowCount <= resRow + refR; rowCount++) {
+double* Matrix::shadeBorder(double* data, int refR, int refC, int sizeC, int resRow, int resCol) {
+	// Function to generate a border around Wally's location
+	for (int rowCount = resRow; rowCount <= resRow + refR; rowCount++) { // Shades horizontally from the starting point of the location to (start location + sizeR of the reference image)
 		for (int colCount = resCol; colCount <= resCol + refC; colCount++) {
 
-			if (rowCount == resRow || rowCount == resRow + refR) { // Overrides values of rows with a value of 1
+			if (rowCount == resRow || rowCount == resRow + refR) { // Shades vertically from the starting point of the location to (start location + sizeC of the reference image)
 				for (int x = 0; x < 2; x++) { // Border thickness is 2 pixels
-					data[sizeC * (rowCount - x) + (colCount - x)] = 1;
+					data[sizeC * (rowCount - x) + (colCount - x)] = 1; // Overrides values of rows with a value of 1
 				}
 			}
 
-			if (colCount == resCol || colCount == resCol + refC) { // Overrides values of columns with a value of 1
-				for (int x = 0; x < 2; x++) {
-					data[sizeC * (rowCount - x) + (colCount - x)] = 1;
+			if (colCount == resCol || colCount == resCol + refC) { // Shades vertically from the starting point of the location to (start location + sizeC of the reference image)
+				for (int x = 0; x < 2; x++) { // Border thickness is 2 pixels
+					data[sizeC * (rowCount - x) + (colCount - x)] = 1; // Overrides values of rows with a value of 1
 				}
 			}
 		}
@@ -33,7 +34,7 @@ double* Matrix::shadeWallyBorder(double* data, int refR, int refC, int sizeC, in
 	return data; // Returns manipulated array back to calling function, this array can now be used in conjection with the give write_file fuction
 }
 
-double * Matrix::shadeWallyBorder(double * sceneDoubles, int wallyRows, int wallyCols, int sceneCols, int WallyFoundRow, int WallyFoundCol, bool nth)
+double * Matrix::shadeBorder(double * sceneDoubles, int wallyRows, int wallyCols, int sceneCols, int WallyFoundRow, int WallyFoundCol, bool nth)
 {
 	// Overloaded function that shows nth closest results with a slightly lighter border
 	for (int rowCount = WallyFoundRow; rowCount <= WallyFoundRow + wallyRows; rowCount++) { 
@@ -52,7 +53,7 @@ double * Matrix::shadeWallyBorder(double * sceneDoubles, int wallyRows, int wall
 			}
 		}
 	}
-	return sceneDoubles; //returns a new array of doubles to be passed into ReadWriteFunctions.cpp's WritePGM method, creating a PGM image in which the selected area is highlighted
+	return sceneDoubles;
 }
 
 Matrix::Matrix()

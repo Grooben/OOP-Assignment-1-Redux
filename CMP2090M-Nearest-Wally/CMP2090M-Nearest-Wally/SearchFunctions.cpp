@@ -7,7 +7,7 @@
 void SearchFunctions::search(RefImage* wally, LargeImage* ref, const int size)
 {
 	std::vector<Result> results;
-	std::cout << std::endl << "Finding Wally, this could take some time (aprox. 40-50 secs on Release)" << std::endl;
+	std::cout << std::endl << "Finding Wally, this could take some time..." << std::endl;
 	for (int k = 0; k < ref->sizeR - wally->sizeR; k+=6)
 	{
 		for (int j = 0; j < ref->sizeC - wally->sizeC; j+=6)

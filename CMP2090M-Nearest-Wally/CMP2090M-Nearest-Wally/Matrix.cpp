@@ -5,14 +5,19 @@ Matrix::Matrix()
 {
 
 }
-Matrix::Matrix(int sizeR, int sizeC, LargeImage * image)
-{
 
+Matrix::Matrix(double* inData)
+{
+	int size = sizeof(inData);
+	for (int i = 0; i < size; i++)
+	{
+		this->_data[i] = inData[i];
+	}
 }
 
-Matrix::Matrix(int sizeR, int sizeC, RefImage * image)
+double Matrix::Get2DLocation(int x, int y, int cols)
 {
-
+	return this->_data[x + (y * cols)];
 }
 
 double* Matrix::shadeWallyBorder(double* data, int refR, int refC, int sizeC, int resRow, int resCol) {

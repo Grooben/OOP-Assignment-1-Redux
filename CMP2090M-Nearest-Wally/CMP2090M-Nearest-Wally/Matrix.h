@@ -4,8 +4,8 @@
 class Matrix
 {
 public:
-	Matrix(int sizeR, int sizeC, LargeImage* image);
-	Matrix(int sizeR, int sizeC, RefImage* image);
+	Matrix(double * inData);
+	double Get2DLocation(int x, int y, int cols);
 	double * shadeWallyBorder(double * sceneDoubles, int wallyRows, int wallyCols, int sceneCols, int WallyFoundRow, int WallyFoundCol);
 	double * shadeWallyBorder(double * sceneDoubles, int wallyRows, int wallyCols, int sceneCols, int WallyFoundRow, int WallyFoundCol, bool nth);
 	Matrix();
@@ -13,6 +13,6 @@ public:
 
 private:
 	int _X, _Y;
-	double _data;
+	double* _data;
 };
 

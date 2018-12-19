@@ -1,23 +1,15 @@
 #include "Matrix.h"
 
+// Array Manipulation Class
 
-Matrix::Matrix()
+double Matrix::Get2DLocation(LargeImage* data, int x, int y)
 {
-
+	return data->getImgValue(x + (y * data->sizeC));
 }
 
-Matrix::Matrix(double* inData)
+double Matrix::Get2DLocation(RefImage* data, int x, int y)
 {
-	int size = sizeof(inData);
-	for (int i = 0; i < size; i++)
-	{
-		this->_data[i] = inData[i];
-	}
-}
-
-double Matrix::Get2DLocation(int x, int y, int cols)
-{
-	return this->_data[x + (y * cols)];
+	return data->getImgValue(x + (y * data->sizeC));
 }
 
 double* Matrix::shadeWallyBorder(double* data, int refR, int refC, int sizeC, int resRow, int resCol) {
@@ -26,7 +18,7 @@ double* Matrix::shadeWallyBorder(double* data, int refR, int refC, int sizeC, in
 		for (int colCount = resCol; colCount <= resCol + refC; colCount++) {
 
 			if (rowCount == resRow || rowCount == resRow + refR) { // Overrides values of rows with a value of 1
-				for (int x = 0; x < 2; x++) {
+				for (int x = 0; x < 2; x++) { // Border thickness is 2 pixels
 					data[sizeC * (rowCount - x) + (colCount - x)] = 1;
 				}
 			}
@@ -38,7 +30,7 @@ double* Matrix::shadeWallyBorder(double* data, int refR, int refC, int sizeC, in
 			}
 		}
 	}
-	return data; //returns a new array of doubles to be passed into ReadWriteFunctions.cpp's WritePGM method, creating a PGM image in which the selected area is highlighted
+	return data; // Returns manipulated array back to calling function, this array can now be used in conjection with the give write_file fuction
 }
 
 double * Matrix::shadeWallyBorder(double * sceneDoubles, int wallyRows, int wallyCols, int sceneCols, int WallyFoundRow, int WallyFoundCol, bool nth)
@@ -61,6 +53,10 @@ double * Matrix::shadeWallyBorder(double * sceneDoubles, int wallyRows, int wall
 		}
 	}
 	return sceneDoubles; //returns a new array of doubles to be passed into ReadWriteFunctions.cpp's WritePGM method, creating a PGM image in which the selected area is highlighted
+}
+
+Matrix::Matrix()
+{
 }
 
 Matrix::~Matrix()

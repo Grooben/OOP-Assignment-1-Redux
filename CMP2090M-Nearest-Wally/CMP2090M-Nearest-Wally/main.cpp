@@ -8,6 +8,7 @@
 #include "LargeImage.h"
 #include "RefImage.h"
 #include "SearchFunctions.h"
+#include "Matrix.h"
 #include <iostream>
 #include <vector>
 #include <thread>
@@ -32,6 +33,9 @@ int main()
 	// Create a temporary store to hold the images in, until copied to their respective objects
 	double* sceneArr = new double[sceneSize];
 	double* wallyArr = new double[wallySize];
+
+	
+	Matrix* wallyMatrix = new Matrix();
 
 	// Create "Image" Object using a defined size
 	LargeImage* scene = new LargeImage(scSzR, scSzC);

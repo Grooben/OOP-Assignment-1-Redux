@@ -1,5 +1,6 @@
 #include "BaseImage.h"
 
+
 // Accessor & Mutator Functions below.
 // Get the Entire Image Arr:
 double* BaseImage::getImage()

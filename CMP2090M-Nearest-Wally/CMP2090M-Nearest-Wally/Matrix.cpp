@@ -15,47 +15,41 @@ Matrix::Matrix(int sizeR, int sizeC, RefImage * image)
 
 }
 
-double* Matrix::shadeWallyBorder(double* sceneDoubles, int wallyRows, int wallyCols, int sceneCols, int WallyFoundRow, int WallyFoundCol) {
-	/*
-	 This function takes the first row and column of the chunk of the cluttered scene in which Wally has been found as input (WallyFoundRow and WallyFoundCol) and, using that as a starting location,
-	 changes the original array of doubles returned from ReadWriteFunctions.cpp's read_text function so that the pixels bordering the section of the ClutteredScene in which Wally has been found
-	 are coloured black. The border is 4 pixels thick, hence the pixel-changing for-loops terminating when x is incremented 4 times, moving the pixel selector either across or vertically
-	 4 times.
+double* Matrix::shadeWallyBorder(double* data, int refR, int refC, int sizeC, int resRow, int resCol) {
 
-	*/
+	for (int rowCount = resRow; rowCount <= resRow + refR; rowCount++) {
+		for (int colCount = resCol; colCount <= resCol + refC; colCount++) {
 
-	for (int rowCount = WallyFoundRow; rowCount <= WallyFoundRow + wallyRows; rowCount++) { //colours horizontally from the starting point to the starting point + the amount of rows in the ref image (49)
-		for (int colCount = WallyFoundCol; colCount <= WallyFoundCol + wallyCols; colCount++) {//colours vertically from the starting point to the starting point + the amount of columns in the ref image (36)
-
-			if (rowCount == WallyFoundRow || rowCount == WallyFoundRow + wallyRows) { //Highlights Rows with a border 4 pixels high
-				for (int x = 0; x < 4; x++) {
-					sceneDoubles[sceneCols * (rowCount - x) + (colCount - x)] = 1;
+			if (rowCount == resRow || rowCount == resRow + refR) { // Overrides values of rows with a value of 1
+				for (int x = 0; x < 2; x++) {
+					data[sizeC * (rowCount - x) + (colCount - x)] = 1;
 				}
 			}
 
-			if (colCount == WallyFoundCol || colCount == WallyFoundCol + wallyCols) { //Highlights Columns with a border 4 pixels wide
-				for (int x = 0; x < 4; x++) {
-					sceneDoubles[sceneCols * (rowCount - x) + (colCount - x)] = 1;
+			if (colCount == resCol || colCount == resCol + refC) { // Overrides values of columns with a value of 1
+				for (int x = 0; x < 2; x++) {
+					data[sizeC * (rowCount - x) + (colCount - x)] = 1;
 				}
 			}
 		}
 	}
-	return sceneDoubles; //returns a new array of doubles to be passed into ReadWriteFunctions.cpp's WritePGM method, creating a PGM image in which the selected area is highlighted
+	return data; //returns a new array of doubles to be passed into ReadWriteFunctions.cpp's WritePGM method, creating a PGM image in which the selected area is highlighted
 }
 
 double * Matrix::shadeWallyBorder(double * sceneDoubles, int wallyRows, int wallyCols, int sceneCols, int WallyFoundRow, int WallyFoundCol, bool nth)
 {
-	for (int rowCount = WallyFoundRow; rowCount <= WallyFoundRow + wallyRows; rowCount++) { //colours horizontally from the starting point to the starting point + the amount of rows in the ref image (49)
-		for (int colCount = WallyFoundCol; colCount <= WallyFoundCol + wallyCols; colCount++) {//colours vertically from the starting point to the starting point + the amount of columns in the ref image (36)
+	// Overloaded function that shows nth closest results with a slightly lighter border
+	for (int rowCount = WallyFoundRow; rowCount <= WallyFoundRow + wallyRows; rowCount++) { 
+		for (int colCount = WallyFoundCol; colCount <= WallyFoundCol + wallyCols; colCount++) {
 
-			if (rowCount == WallyFoundRow || rowCount == WallyFoundRow + wallyRows) { //Highlights Rows with a border 4 pixels high
-				for (int x = 0; x < 4; x++) {
+			if (rowCount == WallyFoundRow || rowCount == WallyFoundRow + wallyRows) { 
+				for (int x = 0; x < 2; x++) {
 					sceneDoubles[sceneCols * (rowCount - x) + (colCount - x)] = 65;
 				}
 			}
 
-			if (colCount == WallyFoundCol || colCount == WallyFoundCol + wallyCols) { //Highlights Columns with a border 4 pixels wide
-				for (int x = 0; x < 4; x++) {
+			if (colCount == WallyFoundCol || colCount == WallyFoundCol + wallyCols) { 
+				for (int x = 0; x < 2; x++) {
 					sceneDoubles[sceneCols * (rowCount - x) + (colCount - x)] = 50;
 				}
 			}

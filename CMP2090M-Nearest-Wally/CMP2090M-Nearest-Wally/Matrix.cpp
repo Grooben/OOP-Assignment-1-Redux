@@ -34,26 +34,26 @@ double* Matrix::shadeBorder(double* data, int refR, int refC, int sizeC, int res
 	return data; // Returns manipulated array back to calling function, this array can now be used in conjection with the give write_file fuction
 }
 
-double * Matrix::shadeBorder(double * sceneDoubles, int wallyRows, int wallyCols, int sceneCols, int WallyFoundRow, int WallyFoundCol, bool nth)
+double * Matrix::shadeBorder(double * scene, int R, int wallyC, int sceneC, int WallyLocR, int WallyLocC, bool nth)
 {
 	// Overloaded function that shows nth closest results with a slightly lighter border
-	for (int rowCount = WallyFoundRow; rowCount <= WallyFoundRow + wallyRows; rowCount++) { 
-		for (int colCount = WallyFoundCol; colCount <= WallyFoundCol + wallyCols; colCount++) {
+	for (int rCnt = WallyLocR; rCnt <= WallyLocR + R; rCnt++) { 
+		for (int cCnt = WallyLocC; cCnt <= WallyLocC + wallyC; cCnt++) {
 
-			if (rowCount == WallyFoundRow || rowCount == WallyFoundRow + wallyRows) { 
+			if (rCnt == WallyLocR || rCnt == WallyLocR + R) { 
 				for (int x = 0; x < 2; x++) {
-					sceneDoubles[sceneCols * (rowCount - x) + (colCount - x)] = 65;
+					scene[sceneC * (rCnt - x) + (cCnt - x)] = 65;
 				}
 			}
 
-			if (colCount == WallyFoundCol || colCount == WallyFoundCol + wallyCols) { 
+			if (cCnt == WallyLocC || cCnt == WallyLocC + wallyC) { 
 				for (int x = 0; x < 2; x++) {
-					sceneDoubles[sceneCols * (rowCount - x) + (colCount - x)] = 50;
+					scene[sceneC * (rCnt - x) + (cCnt - x)] = 50;
 				}
 			}
 		}
 	}
-	return sceneDoubles;
+	return scene;
 }
 
 Matrix::Matrix()

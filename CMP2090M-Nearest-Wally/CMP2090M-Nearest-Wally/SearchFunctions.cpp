@@ -21,14 +21,23 @@ void SearchFunctions::search(RefImage* wally, LargeImage* ref, const int size)
 	}
 	std::cout << "Done! Sorting results..." << std::endl << std::endl;
 	std::sort(results.begin(), results.end(), CompareResult);
-	for (int i = 0; i < 10; i++)
+	int resultCount = results.size();
+	std::cout << "How many N-Best values should be listed? " << resultCount << " were found! 12 are selectable" << std::endl;
+	int nBestCount;
+	std::cin >> nBestCount;
+	if (nBestCount < 12)
+	{
+		std::cout << "Please select 12 or less." << std::endl;
+		std::cin >> nBestCount;
+	}
+	for (int i = 0; i < nBestCount; i++)
 	{
 		std::cout << "Rank " << i + 1 <<" SSD Value: " << results[i].value << " "  <<
 			"X: "<< results[i].x << " Y: " << results[i].y << std::endl;
 	}
 	Matrix mt; // Create instance of Matrix for maniuplation of array
 	mt.shadeBorder(ref->getImage(), wally->sizeR, wally->sizeC, ref->sizeC, results[0].y, results[0].x); // Shade the border of wally's location in black
-	for (int i = 10; i >= 1; i--) // Shade the next 9 best values
+	for (int i = 1; i <= nBestCount; i++) // Shade the next 9 best values
 	{
 		mt.shadeBorder(ref->getImage(), wally->sizeR, wally->sizeC, 
 			ref->sizeC, results[i].y, results[i].x, true); // Uses overloaded shade function to produce a lighter border

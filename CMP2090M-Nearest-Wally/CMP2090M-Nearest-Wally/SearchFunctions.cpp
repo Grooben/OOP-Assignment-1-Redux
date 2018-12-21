@@ -25,7 +25,7 @@ void SearchFunctions::search(RefImage* wally, LargeImage* ref, const int size)
 	std::cout << "How many N-Best values should be listed? " << resultCount << " were found! 12 are selectable" << std::endl;
 	int nBestCount;
 	std::cin >> nBestCount;
-	if (nBestCount < 12)
+	if (nBestCount > 12)
 	{
 		std::cout << "Please select 12 or less." << std::endl;
 		std::cin >> nBestCount;
